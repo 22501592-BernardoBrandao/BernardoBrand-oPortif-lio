@@ -1,0 +1,783 @@
+/* =============================================
+   BERNARDO BRANDÃO LOPES — Portfólio
+   style.css | Ivory & Black | Raleway
+   ============================================= */
+
+/* ---------- VARIÁVEIS ---------- */
+
+:root {
+  color-scheme: light;
+
+  --ivory: #F3F1EC;
+  --black: #0D0D0D;
+
+  --surface: var(--ivory);
+  --surface-text: var(--black);
+  --surface-line: rgba(13, 13, 13, 0.15);
+
+  --dark-surface: var(--black);
+  --dark-text: var(--ivory);
+  --dark-line: rgba(243, 241, 236, 0.15);
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  --surface: var(--black);
+  --surface-text: var(--ivory);
+  --surface-line: rgba(243, 241, 236, 0.15);
+
+  --dark-surface: #050505;
+}
+
+/* ---------- RESET ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: var(--surface);
+  color: var(--surface-text);
+  font-family: "Raleway", sans-serif;
+
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ---------- TIPOGRAFIA ---------- */
+
+.label {
+  font-family: "Raleway", sans-serif;
+  font-size: 0.65rem;
+  font-weight: 300;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+/* ---------- ANIMAÇÕES ---------- */
+
+.fade-section {
+  opacity: 0;
+  transform: translateY(24px);
+
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s ease;
+}
+
+.fade-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+
+  50% {
+    opacity: 0.75;
+  }
+}
+
+/* ---------- NAVEGAÇÃO ---------- */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 50;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  padding: 2rem;
+
+  transition: opacity 0.4s;
+}
+
+.nav-name {
+  color: var(--ivory);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-link {
+  color: var(--ivory);
+
+  font-family: "Raleway", sans-serif;
+  font-size: 0.6rem;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+
+  transition: opacity 0.3s;
+}
+
+.nav-link:hover {
+  opacity: 0.45;
+}
+
+/* ---------- BOTÃO DE TEMA ---------- */
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+
+  min-height: 2.25rem;
+  padding: 0.55rem 0.75rem;
+
+  border: 1px solid rgba(243, 241, 236, 0.35);
+  border-radius: 999px;
+
+  background: rgba(13, 13, 13, 0.25);
+  color: var(--ivory);
+
+  font: inherit;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: rgba(13, 13, 13, 0.55);
+  border-color: rgba(243, 241, 236, 0.7);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--ivory);
+  outline-offset: 3px;
+}
+
+.theme-icon {
+  width: 0.9rem;
+  height: 0.9rem;
+
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.theme-icon-moon {
+  fill: currentColor;
+  stroke: none;
+}
+
+.theme-icon-sun {
+  display: none;
+}
+
+.theme-toggle-label {
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+html[data-theme="dark"] .theme-icon-moon {
+  display: none;
+}
+
+html[data-theme="dark"] .theme-icon-sun {
+  display: block;
+}
+
+/* ---------- HERO ---------- */
+
+.hero {
+  position: relative;
+
+  width: 100%;
+  height: 100svh;
+
+  background: var(--dark-surface);
+  overflow: hidden;
+}
+
+.hero-img {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  opacity: 0.82;
+}
+
+.hero-gradient {
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(13, 13, 13, 0.15) 0%,
+    rgba(13, 13, 13, 0.6) 100%
+  );
+}
+
+.hero-bottom {
+  position: absolute;
+  right: 2.5rem;
+  bottom: 3.5rem;
+  left: 2.5rem;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.hero-label {
+  margin-bottom: 1rem;
+
+  color: var(--ivory);
+  letter-spacing: 0.32em;
+}
+
+.hero-name-text {
+  color: var(--ivory);
+
+  font-family: "Raleway", sans-serif;
+  font-size: clamp(2.8rem, 7vw, 6.5rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.hero-sub {
+  color: var(--ivory);
+  opacity: 0.7;
+  text-align: right;
+}
+
+/* ---------- INDICADOR DE ROLAGEM ---------- */
+
+.scroll-hint {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+
+  transform: translateX(-50%);
+}
+
+.scroll-line {
+  width: 1px;
+  height: 48px;
+
+  background: var(--ivory);
+  opacity: 0.35;
+
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* ---------- IMAGENS ---------- */
+
+.tonal-img {
+  filter: contrast(1.05) brightness(0.92);
+}
+
+/* ---------- SOBRE ---------- */
+
+.section-sobre {
+  padding: 16vh 8vw;
+
+  background: var(--surface);
+
+  transition: background-color 0.4s ease;
+}
+
+.sobre-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+.sobre-label {
+  margin-bottom: 2rem;
+  color: var(--surface-text);
+}
+
+.sobre-text {
+  max-width: 48ch;
+
+  color: var(--surface-text);
+
+  font-family: "Raleway", sans-serif;
+  font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+  font-weight: 400;
+  line-height: 1.8;
+}
+
+.sobre-langs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem;
+
+  margin-top: 3rem;
+}
+
+.sobre-langs .label {
+  color: var(--surface-text);
+}
+
+/* ---------- HABILIDADES ---------- */
+
+.section-skills {
+  padding: 16vh 8vw;
+  background: var(--dark-surface);
+}
+
+.skills-top-label {
+  display: block;
+  margin-bottom: 4rem;
+
+  color: var(--ivory);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: 8vw;
+}
+
+.skill-col-offset {
+  padding-top: 8vh;
+}
+
+.skills-title {
+  margin-bottom: 3rem;
+
+  color: var(--ivory);
+
+  font-family: "Raleway", sans-serif;
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.skills-list li {
+  padding: 1.15rem 0;
+
+  border-top: 1px solid var(--dark-line);
+  color: var(--ivory);
+
+  font-family: "Raleway", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.skills-list li:last-child {
+  border-bottom: 1px solid var(--dark-line);
+}
+
+/* ---------- PROJETOS ---------- */
+
+.section-projects {
+  background: var(--surface);
+  transition: background-color 0.4s ease;
+}
+
+.projects-header {
+  position: relative;
+
+  height: 16vh;
+
+  background: var(--dark-surface);
+  overflow: hidden;
+}
+
+.projects-header-img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  mix-blend-mode: multiply;
+  opacity: 0.88;
+}
+
+.projects-header-label {
+  position: absolute;
+  bottom: 1rem;
+  left: 8vw;
+
+  color: var(--ivory);
+}
+
+.projects-list {
+  padding: 10vh 8vw 16vh;
+}
+
+.project-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  gap: 4vw;
+
+  padding: 2.8rem 0;
+
+  border-bottom: 1px solid var(--surface-line);
+}
+
+.project-item:first-child {
+  border-top: 1px solid var(--surface-line);
+}
+
+.project-name {
+  margin-bottom: 0.9rem;
+
+  color: var(--surface-text);
+
+  font-family: "Raleway", sans-serif;
+  font-size: clamp(1.25rem, 2.2vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.project-desc {
+  max-width: 52ch;
+
+  color: var(--surface-text);
+  opacity: 0.55;
+
+  font-family: "Raleway", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 400;
+  line-height: 1.9;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.project-year {
+  padding-top: 0.35rem;
+
+  color: var(--surface-text);
+  opacity: 0.4;
+
+  font-family: "Raleway", sans-serif;
+  font-size: 0.65rem;
+  font-weight: 300;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ---------- LINK DO GITHUB ---------- */
+
+.github-link-wrap {
+  margin-top: 5rem;
+}
+
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.2rem;
+
+  padding-bottom: 0.4rem;
+
+  border-bottom: 1px solid var(--surface-text);
+  color: var(--surface-text);
+
+  transition: opacity 0.3s;
+}
+
+.github-link:hover {
+  opacity: 0.4;
+}
+
+/* ---------- CONTATO ---------- */
+
+.section-contact {
+  background: var(--surface);
+  transition: background-color 0.4s ease;
+}
+
+.contact-hero {
+  position: relative;
+
+  height: 60vh;
+
+  background: #c8c6c1;
+  overflow: hidden;
+}
+
+.contact-hero-img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.contact-hero-overlay {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(243, 241, 236, 0.1);
+}
+
+.contact-title {
+  color: var(--ivory);
+
+  font-family: "Raleway", sans-serif;
+  font-size: clamp(3.5rem, 12vw, 11rem);
+  font-weight: 700;
+  line-height: 0.9;
+  text-align: center;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: 8vw;
+
+  padding: 14vh 8vw;
+}
+
+.contact-col-label {
+  display: block;
+  margin-bottom: 2rem;
+
+  color: var(--surface-text);
+}
+
+.contact-main-link {
+  display: block;
+
+  margin-bottom: 1.2rem;
+
+  color: var(--surface-text);
+
+  font-family: "Raleway", sans-serif;
+  font-size: clamp(1.1rem, 2vw, 1.7rem);
+  font-weight: 700;
+
+  transition: opacity 0.3s;
+}
+
+.contact-main-link:hover {
+  opacity: 0.45;
+}
+
+.contact-secondary-link {
+  display: block;
+
+  color: var(--surface-text);
+  opacity: 0.55;
+
+  transition: opacity 0.3s;
+}
+
+.contact-secondary-link:hover {
+  opacity: 1;
+}
+
+/* ---------- RODAPÉ ---------- */
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+
+  padding: 3.5rem 8vw;
+
+  background: var(--dark-surface);
+}
+
+.footer-copy {
+  color: var(--ivory);
+  opacity: 0.45;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+}
+
+.footer-link {
+  color: var(--ivory);
+  opacity: 0.45;
+
+  transition: opacity 0.3s;
+}
+
+.footer-link:hover {
+  opacity: 1;
+}
+
+.footer-city {
+  color: var(--ivory);
+  opacity: 0.22;
+}
+
+/* ---------- RESPONSIVO ---------- */
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1.5rem;
+  }
+
+  .nav-name {
+    display: none;
+  }
+
+  .nav-actions {
+    width: 100%;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .nav-links {
+    gap: 1.2rem;
+  }
+
+  .theme-toggle-label {
+    display: none;
+  }
+
+  .theme-toggle {
+    flex: 0 0 auto;
+    justify-content: center;
+
+    width: 2.25rem;
+    padding: 0;
+  }
+
+  .hero-bottom {
+    right: 1.5rem;
+    bottom: 2.5rem;
+    left: 1.5rem;
+
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .hero-sub {
+    text-align: left;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  .skill-col-offset {
+    padding-top: 0;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+
+    padding: 10vh 8vw;
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .sobre-langs {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 1.1rem;
+  }
+
+  .nav-links {
+    gap: 0.8rem;
+  }
+
+  .nav-link {
+    font-size: 0.52rem;
+    letter-spacing: 0.2em;
+  }
+
+  .project-item {
+    grid-template-columns: 1fr;
+  }
+
+  .project-year {
+    padding-top: 0;
+  }
+}
+
+/* ---------- ACESSIBILIDADE ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
